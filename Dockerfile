@@ -52,7 +52,7 @@ RUN apk upgrade --update \
     && rm -rf kcptun-linux-amd64-$KCP_VERSION.tar.gz \
         shadowsocks-libev-$SS_LIBEV_VERSION.tar.gz \
         shadowsocks-libev-$SS_LIBEV_VERSION \
-        udp2raw_binaries.tar.gz \
+        tinyvpn_binaries.tar.gz \
         /var/cache/apk/*
 
 ADD entrypoint.sh /entrypoint.sh
