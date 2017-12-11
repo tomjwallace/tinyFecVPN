@@ -19,10 +19,10 @@ export password=131415
 
 
 
-	udp2raw -s -l0.0.0.0:$udp2raw_port -r 127.0.0.1:8855 --raw-mode faketcp -a -k "$password" --log-level 2& >/dev/null 2>&1
+	udp2raw -s -l0.0.0.0:$udp2raw_port -r 127.0.0.1:8855 --raw-mode faketcp -a -k "$password" --log-level 2& >/dev/null 2>&1 &
 
 
 
-	tinyvpn -s -l 127.0.0.1:8855 --sub-net $local_addr -k "$password" --log-level 2& >/dev/null 2>&1
+	tinyvpn -s -l 127.0.0.1:8855 --sub-net $local_addr -k "$password" --log-level 2& >/dev/null 2>&1 &
 
 
