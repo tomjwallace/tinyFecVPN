@@ -10,19 +10,17 @@ export local_addr=172.16.0.0
 export password=131415
 
 
-	sysctl -w net.ipv4.ip_forward=1
-	if !(iptables-save -t nat | grep -q "tinyFecVPN"); then
-		iptables -t nat -A POSTROUTING -s $local_addr/16 -m comment --comment "tinyFecVPN" -j SNAT --to-source $serverip
-	fi
+sysctl -w net.ipv4.ip_forward=1
+
+iptables -t nat -A POSTROUTING -s $local_addr/16 -m comment --comment "tinyFecVPN" -j SNAT --to-source $serverip
+
+
+tinyvpn -s -l 127.0.0.1:8855 --sub-net $local_addr -k "$password" &
+
+udp2raw -s -l0.0.0.0:$udp2raw_port -r 127.0.0.1:8855 --raw-mode faketcp -a -k "$password"  &
 
 
 
-
-
-	udp2raw -s -l0.0.0.0:$udp2raw_port -r 127.0.0.1:8855 --raw-mode faketcp -a -k "$password" --log-level 2& >/dev/null 2>&1 &
-
-
-
-	tinyvpn -s -l 127.0.0.1:8855 --sub-net $local_addr -k "$password" --log-level 2& >/dev/null 2>&1 &
+	
 
 
