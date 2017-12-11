@@ -11,6 +11,8 @@ RUN apk upgrade --update \
         git \
         net-tools \
         iptables \
+        curl \
+        bash \
     && curl -sSLO https://github.com/koolshare/ledesoft/blob/master/sgame/sgame/bin/tinyvpn \
     && curl -sSLO https://github.com/koolshare/ledesoft/blob/master/sgame/sgame/bin/udp2raw \
     && mv tinyvpn /usr/bin/tinyvpn \
