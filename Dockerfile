@@ -5,10 +5,12 @@ ARG TZ='Asia/Shanghai'
 ENV TZ $TZ
 
 RUN apk upgrade --update \
-    && apk add bash tzdata iptables \
+    && apk add bash tzdata \
     && apk add --virtual .build-deps \
         tar \
         git \
+        net-tools \
+        iptables \
     && curl -sSLO https://github.com/koolshare/ledesoft/blob/master/sgame/sgame/bin/tinyvpn \
     && curl -sSLO https://github.com/koolshare/ledesoft/blob/master/sgame/sgame/bin/udp2raw \
     && mv tinyvpn /usr/bin/tinyvpn \
