@@ -1,3 +1,3 @@
 #!/bin/bash
 
-bash /tinyvpn.sh
+bash /tinyvpn.sh start
