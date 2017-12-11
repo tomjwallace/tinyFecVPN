@@ -13,7 +13,7 @@ RUN apt-get update -y \
     && mv tinyvpn /usr/bin/tinyvpn \
     && mv udp2raw /usr/bin/udp2raw \
     && ln -sf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && echo $TZ > /etc/timezone \
+    && echo $TZ > /etc/timezone 
 
 
 ADD entrypoint.sh /entrypoint.sh
