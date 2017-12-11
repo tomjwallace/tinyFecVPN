@@ -5,7 +5,7 @@ ARG TZ='Asia/Shanghai'
 ENV TZ $TZ
 
 RUN apk upgrade --update \
-    && apk add bash tzdata iptables net-tools bash\
+    && apk add bash tzdata iptables net-tools bash openvpn \
     && apk add --virtual .build-deps \
         git \
         curl \
