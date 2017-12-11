@@ -5,14 +5,10 @@ ARG TZ='Asia/Shanghai'
 ENV TZ $TZ
 
 RUN apk upgrade --update \
-    && apk add bash tzdata \
+    && apk add bash tzdata iptables net-tools bash\
     && apk add --virtual .build-deps \
-        tar \
         git \
-        net-tools \
-        iptables \
         curl \
-        bash \
     && curl -sSLO https://github.com/koolshare/ledesoft/blob/master/sgame/sgame/bin/tinyvpn \
     && curl -sSLO https://github.com/koolshare/ledesoft/blob/master/sgame/sgame/bin/udp2raw \
     && mv tinyvpn /usr/bin/tinyvpn \
@@ -34,5 +30,7 @@ ADD entrypoint.sh /entrypoint.sh
 ADD tinyvpn.sh /tinyvpn.sh
 RUN chmod +x /entrypoint.sh
 RUN chmod +x /tinyvpn.sh
+RUN chmod +x /usr/bin/tinyvpn
+RUN chmod +x /usr/bin/udp2raw
 
 ENTRYPOINT ["/entrypoint.sh"]
