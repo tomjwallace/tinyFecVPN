@@ -9,6 +9,8 @@ export udp2raw_port=4032
 export local_addr=172.16.0.0
 export password=131415
 
+mknod /dev/net/tun c 10 200
+chmod 600 /dev/net/tun
 
 sysctl -w net.ipv4.ip_forward=1
 
